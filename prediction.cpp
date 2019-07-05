@@ -14,29 +14,7 @@ using namespace std;
 
 int kIMAGE_SIZE=1024;
 int kCHANNELS = 3;
-void cartesian_product(vector<vector<float>> dimvalue,vector<vector<float>> &res,int layer,vector<float> tmp){
 
-
-    if (layer < dimvalue.size() - 1){
-        for (int i = 0; i < dimvalue[layer].size(); i++){
-            vector<float> sb;
-            sb.clear();
-
-            for (int i = 0; i < tmp.size(); i++){
-                    sb.push_back(tmp[i]);
-            }
-            sb.push_back(dimvalue[layer][i]);
-            cartesian_product(dimvalue, res, layer+1,sb);
-        }
-    }
-    else if (layer == dimvalue.size()-1){
-        for (int j = 0; j < dimvalue[layer].size();j++){
-            tmp.push_back(dimvalue[layer][j]);
-            res.push_back(tmp);
-            tmp.pop_back();
-        }
-    }
-}
 void softmax(vector<vector<float>> input,vector<vector<float>> &output){
     vector<float> temp;
     for(int i=0;i<input.size();i++){
